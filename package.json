@@ -1,0 +1,16 @@
+{
+  "name": "my-miniprogram-mall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.1.2",
+    "wxa-plugin-canvas": "^1.1.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm version"
+  },
+  "author": "",
+  "license": "ISC"
+}

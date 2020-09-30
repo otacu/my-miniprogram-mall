@@ -1,0 +1,74 @@
+<import src="/template/login/index.wxml" />
+
+<view class="container">
+  <!--如果已经登录-->
+	<view wx:if="{{apiUserInfoMap}}" class="userinfo">
+		<image wx:if="{{apiUserInfoMap.base.avatarUrl}}" class="userinfo-avatar" src="{{ apiUserInfoMap.base.avatarUrl }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ apiUserInfoMap.base.nick }}</text>
+	</view>
+  <!--如果未登录-->
+  <view wx:else class="userinfo" style="margin-bottom:50rpx;">
+		<image class="userinfo-avatar" src="/images/nologin.png" background-size="cover"></image>
+		<button class="weui-btn mini-btn" plain="true" size="mini" bindtap="goLogin">立即登录</button>
+	</view>
+  <view class="space"></view>
+  <navigator url="/pages/order-list/index">
+    <view class="menu-item">
+      <view class="l">我的订单</view>
+      <image class="next" src="/images/icon/next.png"></image>
+    </view>
+  </navigator>
+  <view class="line"></view>
+  <view class='order-shortcut'>
+    <view class='item' bindtap='goOrder' data-type="0">
+      <image class="icon" src="/images/order/topay.png" background-size="cover"></image>
+      <view class='text'>待付款</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="1">
+      <image class="icon" src="/images/order/fahuo.png" background-size="cover"></image>
+      <view class='text'>待发货</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="2">
+      <image class="icon" src="/images/order/shouhuo.png" background-size="cover"></image>
+      <view class='text'>待收货</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="3">
+      <image class="icon" src="/images/order/pj.png" background-size="cover"></image>
+      <view class='text'>待评价</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="99">
+      <image class="icon" src="/images/order/shouhou.png" background-size="cover"></image>
+      <view class='text'>售后</view>
+    </view>
+  </view>
+
+  <view class="space"></view>  
+  <navigator url="/pages/select-address/index">
+    <view class="menu-item">
+      <view class="l">收货地址</view>
+      <image class="next" src="/images/icon/next.png"></image>
+    </view>
+  </navigator>
+  <view class="line"></view>
+  <navigator url="/pages/goods/fav">
+    <view class="menu-item">
+      <view class="l">我的收藏</view>
+      <image class="next" src="/images/icon/next.png"></image>
+    </view>
+  </navigator>
+
+  <view class="space"></view>
+  <!--如果已经登录-->
+  <view wx:if="{{apiUserInfoMap}}" class="menu-item" bindtap="loginOut">
+    <view class="l">退出登录</view>
+    <image class="next" src="/images/icon/next.png"></image>
+  </view>
+  <!--如果未登录-->
+  <view wx:else class="menu-item" bindtap="goLogin">
+    <view class="l">授权登录</view>
+    <image class="next" src="/images/icon/next.png"></image>
+  </view>
+
+</view>
+<!--如果未登录，显示登录模板-->
+<template is="apifmLogin" data="{{wxlogin: wxlogin}}" />
